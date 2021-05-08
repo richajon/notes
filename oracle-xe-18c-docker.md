@@ -28,6 +28,7 @@ mkdir -p /opt/oraclexe/scripts/startup
 chown 54321:54321 /opt/oraclexe  
 ```
 
+Start the docker container binding on localhost
 ```
 docker run --name oraclexe \
     -d \
@@ -41,6 +42,7 @@ docker run --name oraclexe \
     oracle/database:18.4.0-xe
 ```
 
+Start the docker container binding on external IP address
 ```
 docker run --name oraclexe \
     -d \
@@ -52,6 +54,11 @@ docker run --name oraclexe \
     -v /opt/oraclexe/scripts/setup:/opt/oracle/scripts/setup \
     -v /opt/oraclexe/scripts/startup:/opt/oracle/scripts/startup \
     oracle/database:18.4.0-xe
+```
+
+Connecting to the database using SQL Plus
+```
+sqlplus sys/OracleXE@//192.168.0.80:1521/XEPDB1 as sysdba
 ```
 
 
