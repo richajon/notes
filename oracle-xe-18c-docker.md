@@ -1,7 +1,6 @@
-Based on:
-https://blogs.oracle.com/oraclemagazine/deliver-oracle-database-18c-express-edition-in-containers
+# Installing Oracle XE 18c using Docker
 
-Clone de oraccle docker-images repository:
+Clone de oracle docker-images repository:
 ```
 cd ~
 git clone https://github.com/oracle/docker-images.git
@@ -60,5 +59,8 @@ Connecting to the database using SQL Plus
 ```
 sqlplus sys/OracleXE@//192.168.0.80:1521/XEPDB1 as sysdba
 ```
+
+Based on
+https://blogs.oracle.com/oraclemagazine/deliver-oracle-database-18c-express-edition-in-containers
 
 
