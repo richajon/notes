@@ -26,6 +26,8 @@ wget https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec167
 
 ### The server01 instance
 ```
+cd /home/minecraft
+mv server.jar minecraft_server.1.16.5.jar
 ls -s /home/minecraft/minecraft_server.1.16.5.jar /home/minecraft/instances/server01/minecraft_server.jar
 ```
 
