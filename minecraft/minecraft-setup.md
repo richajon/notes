@@ -36,7 +36,7 @@ ls -s /home/minecraft/minecraft_server.1.16.5.jar /home/minecraft/instances/serv
 Start the server using the java command
 ```
 cd /home/minecraft/instances/server01
-java -Xmx1024M -Xms1024M -jar minecraft_server.1.16.5.jar nogui
+java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui
 ```
 
 The server will start then stop so you accept the EULA.
