@@ -31,6 +31,7 @@ Start the docker container binding on localhost
 ```
 docker run --name oraclexe \
     -d \
+    --rm \
     -p 51521:1521 \
     -p 55500:5500 \
     -e ORACLE_PWD=OracleXe \
@@ -45,6 +46,7 @@ Start the docker container binding on external IP address
 ```
 docker run --name oraclexe \
     -d \
+    --rm \
     -p 192.168.0.80:1521:1521 \
     -p 192.168.0.80:5500:5500 \
     -e ORACLE_PWD=OracleXE \
@@ -53,6 +55,11 @@ docker run --name oraclexe \
     -v /opt/oraclexe/scripts/setup:/opt/oracle/scripts/setup \
     -v /opt/oraclexe/scripts/startup:/opt/oracle/scripts/startup \
     oracle/database:18.4.0-xe
+```
+
+Stopping the oraclexe container
+```
+docker container stop oraclexe
 ```
 
 Connecting to the database using SQL Plus
