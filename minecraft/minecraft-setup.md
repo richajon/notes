@@ -1,14 +1,16 @@
-# Target Linux distribution
+# Minecraft Linux Server Setup
+
+## Target Linux distribution
 Raspberry PI 4 or Debian 9+ distribution
 
-# Install requirements
+## Install requirements
 ```
 sudo apt install openjdk-11-jdk screen
 ```
 
-# The minecraft user home
+## The minecraft user home
 
-## The folder structure
+### The folder structure
 ```
 useradd -m -s /bin/bash
 mkdir /home/minecraft/backups
@@ -16,18 +18,18 @@ mkdir /home/minecraft/bin
 mkdir -p /home/minecraft/instances/server01
 ```
 
-## The minecraft server jar
+### The minecraft server jar
 ```
 cd /home/minecraft
 wget https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar
 ```
 
-## The server01 instance
+### The server01 instance
 ```
 ls -s /home/minecraft/minecraft_server.1.16.5.jar /home/minecraft/instances/server01/minecraft_server.jar
 ```
 
-## Starting server01 instance for the first time
+### Starting server01 instance for the first time
 
 Start the server using the java command
 ```
@@ -46,9 +48,9 @@ Set the eula variable to `true`
 eula=true
 ```
 
-# The minecraft service
+## The minecraft service
 
-## Creating the service file
+### Creating the service file
 
 ```
 nano /etc/systemd/system/minecraft@.service
@@ -82,7 +84,7 @@ ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "stop"\015'
 WantedBy=multi-user.target
 ```
 
-## Enabling, disabling, starting, stopping the service
+### Enabling, disabling, starting, stopping the service
 ```
 # registering the service from statup
 systemctl enable minecraft@server01.service
@@ -97,9 +99,9 @@ systemctl start minecraft@server01.service
 systemctl stop minecraft@server01.service
 ```
 
-# The backups
+## The backups
 
-## The backup script
+### The backup script
 ```
 nano /home/minecraft/bin/backup.sh
 ```
@@ -138,7 +140,7 @@ echo "Starting the server"
 systemctl start minecraft@server01.service
 ```
 
-## The backup schedule
+### The backup schedule
 
 As root, add crontab entry.
 ```
