@@ -57,6 +57,10 @@ docker run --name oraclexe \
 
 Connecting to the database using SQL Plus
 ```
+# main database
+sqlplus sys/OracleXE@//192.168.0.80:1521/XE as sysdba
+
+# sample PDB
 sqlplus sys/OracleXE@//192.168.0.80:1521/XEPDB1 as sysdba
 ```
 
