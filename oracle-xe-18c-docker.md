@@ -66,9 +66,6 @@ Connecting to the database using SQL Plus
 ```
 # main database
 sqlplus sys/OracleXE@//192.168.0.80:1521/XE as sysdba
-
-# sample PDB
-sqlplus sys/OracleXE@//192.168.0.80:1521/XEPDB1 as sysdba
 ```
 
 Creating a PDB with an ADMIN user
@@ -88,6 +85,24 @@ Creating creating a user with user for the application
 ALTER SESSION SET CONTAINER = PDBNAME;
 CREATE USER PDBNAME_APP IDENTIFIED BY PDBNAME_APP_PWD CONTAINER=CURRENT;
 GRANT CREATE SESSION TO PDBNAME_APP CONTAINER=CURRENT;
+```
+
+Dropping the application user
+```
+ALTER SESSION SET CONTAINER = PDBNAME;
+
+REVOKE CREATE SESSION FROM PDBNAME_APP;
+
+DROP USER PDBNAME_APP;
+
+alter pluggable database "PDBNAME" close;
+
+drop pluggable database PDBNAME including datafiles;
+```
+
+Connecting to the PDB using SQL Plus
+```
+sqlplus PDBNAMEADM/PDBNAMEPWD@//192.168.0.80:1521/PDBNAME
 ```
 
 Based on
