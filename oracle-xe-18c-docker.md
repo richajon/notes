@@ -94,9 +94,13 @@ ALTER SESSION SET CONTAINER = PDBNAME;
 REVOKE CREATE SESSION FROM PDBNAME_APP;
 
 DROP USER PDBNAME_APP;
+```
 
+Dropping the PDB
+```
 alter pluggable database "PDBNAME" close;
 
+ALTER SESSION SET CONTAINER = CDB$ROOT;
 drop pluggable database PDBNAME including datafiles;
 ```
 
