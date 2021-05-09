@@ -71,6 +71,25 @@ sqlplus sys/OracleXE@//192.168.0.80:1521/XE as sysdba
 sqlplus sys/OracleXE@//192.168.0.80:1521/XEPDB1 as sysdba
 ```
 
+Creating a PDB with an ADMIN user
+```
+create pluggable database "PDBNAME"
+    admin user "PDBNAMEADM" identified by PDBNAMEPWD
+        ROLES=(DBA)
+    STORAGE (MAXSIZE 2G)
+    DEFAULT TABLESPACE PDBNAME
+    file_name_convert = ('/opt/oracle/oradata/XE/pdbseed/', '/opt/oracle/dbs/pdbname/');
+
+alter pluggable database "PDBNAME" open read write;
+```
+
+Creating creating a user with user for the application
+```
+ALTER SESSION SET CONTAINER = PDBNAME;
+CREATE USER PDBNAME_APP IDENTIFIED BY PDBNAME_APP_PWD CONTAINER=CURRENT;
+GRANT CREATE SESSION TO PDBNAME_APP CONTAINER=CURRENT;
+```
+
 Based on
 https://blogs.oracle.com/oraclemagazine/deliver-oracle-database-18c-express-edition-in-containers
 
