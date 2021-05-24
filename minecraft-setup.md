@@ -5,14 +5,15 @@ Raspberry PI 4 or Debian 9+ distribution
 
 ## Install requirements
 ```
-sudo apt install openjdk-11-jdk screen
+apt install openjdk-11-jdk screen
 ```
 
 ## The minecraft user home
 
 ### The folder structure
 ```
-useradd -m -s /bin/bash
+useradd -m -s /bin/bash minecraft
+su - minecraft
 mkdir /home/minecraft/backups
 mkdir /home/minecraft/bin
 mkdir -p /home/minecraft/instances/server01
@@ -55,6 +56,7 @@ eula=true
 ### Creating the service file
 
 ```
+su -
 nano /etc/systemd/system/minecraft@.service
 ```
 
@@ -71,7 +73,7 @@ Group=minecraft
 
 Restart=always
 
-ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx2400m -jar minecraft_server.jar nogui
+ExecStart=/usr/bin/screen -DmS mc-%i /usr/bin/java -Xmx4096m -jar minecraft_server.jar nogui
 
 ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "say SERVER SHUTTING DOWN IN 15 SECONDS..."\015'
 ExecStop=/bin/sleep 5
@@ -106,6 +108,7 @@ systemctl stop minecraft@server01.service
 ### The backup script
 ```
 nano /home/minecraft/bin/backup.sh
+chmod u+x /home/minecraft/bin/backup.sh
 ```
 
 ```
