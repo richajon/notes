@@ -47,8 +47,8 @@ Start the docker container binding on external IP address
 docker run --name oraclexe \
     -d \
     --rm \
-    -p 192.168.0.80:1521:1521 \
-    -p 192.168.0.80:5500:5500 \
+    -p 192.168.0.50:1521:1521 \
+    -p 192.168.0.50:5500:5500 \
     -e ORACLE_PWD=OracleXE \
     -e ORACLE_CHARACTERSET=AL32UTF8 \
     -v /opt/oraclexe/oradata:/opt/oracle/oradata \
@@ -65,7 +65,7 @@ docker container stop oraclexe
 Connecting to the database using SQL Plus
 ```
 # main database
-sqlplus sys/OracleXE@//192.168.0.80:1521/XE as sysdba
+sqlplus sys/OracleXE@//192.168.0.50:1521/XE as sysdba
 ```
 
 Creating a PDB with an ADMIN user
