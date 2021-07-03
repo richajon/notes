@@ -106,7 +106,7 @@ drop pluggable database PDBNAME including datafiles;
 
 Connecting to the PDB using SQL Plus
 ```
-sqlplus PDBNAMEADM/PDBNAMEPWD@//192.168.0.80:1521/PDBNAME
+sqlplus PDBNAMEADM/PDBNAMEPWD@//192.168.0.50:1521/PDBNAME
 ```
 
 Based on
