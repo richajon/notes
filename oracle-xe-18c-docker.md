@@ -9,7 +9,7 @@ git clone https://github.com/oracle/docker-images.git
 Build docker image:
 ```
 cd ~/docker-images/OracleDatabase/SingleInstance/dockerfiles
-./buildDockerImage.sh -v 18.4.0 -x
+./buildContainerImage.sh -v 18.4.0 -x
 ```
 
 List the docker images to verify it got created:
