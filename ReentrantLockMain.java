@@ -67,7 +67,7 @@ public class ReentrantLockMain {
                 } else {
 
                     // move data
-                        int moveElementsAtATime = (int) (Math.random() * 100) + 1;
+                    int moveElementsAtATime = (int) (Math.random() * 100) + 1;
                     int i = origin.size() <= moveElementsAtATime ? origin.size() : moveElementsAtATime;
                     List<String> listToTransfer = origin.subList(0, i);
 
